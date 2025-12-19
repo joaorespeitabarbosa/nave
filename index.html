@@ -1,14 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>My Site</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NAVE | Photo & Video</title>
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>🚀 Site online!</h1>
-    <p>If you can read this, GitHub Pages is working.</p>
+  <header class="top-bar">
+    <a class="brand" href="#" data-target="home" aria-label="Voltar à página inicial">
+      <img class="brand-logo" src="images/navelogo.jpg" alt="NAVE logo">
+    </a>
+    <nav class="nav">
+      <a href="#" data-target="home">Home</a>
+      <a href="#" data-target="portfolio">Portfolio</a>
+      <a href="#" data-target="about">About</a>
+      <a href="#" data-target="contact">Contact</a>
+    </nav>
+    <button class="theme-toggle" aria-label="Toggle theme" id="themeToggle">🌓</button>
+  </header>
 
-    <script src="script.js"></script>
+  <section class="hero page-section active" id="home">
+    <video class="hero-video" autoplay muted loop playsinline>
+      <source src="https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4" type="video/mp4">
+      Your browser does not support HTML5 video.
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>We craft visual stories.</h1>
+      <p>Photography and filmmaking tailored for brands, artists, and dreamers.</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#" data-target="portfolio">View Portfolio</a>
+        <a class="btn ghost" href="#" data-target="contact">Book a project</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section page-section" id="portfolio">
+    <div class="section-header">
+      <div>
+        <p class="eyebrow">Selected Work</p>
+        <h2>Portfolio</h2>
+      </div>
+      <div class="filters" role="group" aria-label="Filter portfolio">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="photo">Photography</button>
+        <button class="filter-btn" data-filter="video">Video</button>
+        <button class="filter-btn" data-filter="aerial">Aerial</button>
+      </div>
+    </div>
+
+    <div class="grid" id="portfolioGrid">
+      <article class="card" data-category="photo">
+        <div class="card-media" style="background-image:url('https://images.unsplash.com/photo-1526481280695-3c469c2f89b3?auto=format&fit=crop&w=900&q=80');"></div>
+        <div class="card-body">
+          <h3>Urban Portraits</h3>
+          <p>Editorial portrait session in downtown.</p>
+          <button class="link" data-modal data-title="Urban Portraits" data-category="Photography" data-desc="A series of editorial portraits capturing authentic street energy." data-img="https://images.unsplash.com/photo-1526481280695-3c469c2f89b3?auto=format&fit=crop&w=1500&q=80">View details</button>
+        </div>
+      </article>
+
+      <article class="card" data-category="video">
+        <div class="card-media" style="background-image:url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80');"></div>
+        <div class="card-body">
+          <h3>Brand Film</h3>
+          <p>Launch video for a lifestyle brand.</p>
+          <button class="link" data-modal data-title="Brand Film" data-category="Video" data-desc="Launch film blending kinetic visuals and narrative voiceover." data-img="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1500&q=80">View details</button>
+        </div>
+      </article>
+
+      <article class="card" data-category="aerial">
+        <div class="card-media" style="background-image:url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=80');"></div>
+        <div class="card-body">
+          <h3>Coastal Aerials</h3>
+          <p>Drone cinematography over the shoreline.</p>
+          <button class="link" data-modal data-title="Coastal Aerials" data-category="Aerial" data-desc="Sweeping aerial vistas highlighting textures of sea and land." data-img="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1500&q=80">View details</button>
+        </div>
+      </article>
+
+      <article class="card" data-category="photo">
+        <div class="card-media" style="background-image:url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80');"></div>
+        <div class="card-body">
+          <h3>Studio Lookbook</h3>
+          <p>Clean fashion lookbook with soft light.</p>
+          <button class="link" data-modal data-title="Studio Lookbook" data-category="Photography" data-desc="Minimal set design and calibrated lighting for texture-rich garments." data-img="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1500&q=80">View details</button>
+        </div>
+      </article>
+
+      <article class="card" data-category="video">
+        <div class="card-media" style="background-image:url('https://images.unsplash.com/photo-1521747116042-5a810fda9664?auto=format&fit=crop&w=900&q=80');"></div>
+        <div class="card-body">
+          <h3>Product Reveal</h3>
+          <p>Macro cinematography for a launch.</p>
+          <button class="link" data-modal data-title="Product Reveal" data-category="Video" data-desc="Tabletop macro shots with precision lighting for a premium reveal." data-img="https://images.unsplash.com/photo-1521747116042-5a810fda9664?auto=format&fit=crop&w=1500&q=80">View details</button>
+        </div>
+      </article>
+
+      <article class="card" data-category="aerial">
+        <div class="card-media" style="background-image:url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80');"></div>
+        <div class="card-body">
+          <h3>City from Above</h3>
+          <p>Nighttime aerial timelapse project.</p>
+          <button class="link" data-modal data-title="City from Above" data-category="Aerial" data-desc="Hyperlapse aerial views with a focus on light trails and motion." data-img="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1500&q=80">View details</button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section split page-section" id="about">
+    <div>
+      <p class="eyebrow">Who we are</p>
+      <h2>About NAVE</h2>
+      <p>NAVE is a collective of photographers and filmmakers crafting visuals that move people. From intimate portraits to large-scale productions, we merge strategy with storytelling.</p>
+      <div class="stats">
+        <div><span class="stat-number">10+</span><span class="stat-label">Years of experience</span></div>
+        <div><span class="stat-number">150</span><span class="stat-label">Projects delivered</span></div>
+        <div><span class="stat-number">18</span><span class="stat-label">Cities filmed</span></div>
+      </div>
+    </div>
+    <div class="about-media">
+      <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=900&q=80" alt="Team working with camera gear">
+    </div>
+  </section>
+
+  <section class="section page-section" id="contact">
+    <div class="section-header">
+      <div>
+        <p class="eyebrow">Let's talk</p>
+        <h2>Contact</h2>
+      </div>
+      <p>Tell us about your next project. We aim to reply within one business day.</p>
+    </div>
+    <form class="contact-form" action="https://formsubmit.co/your@email.com" method="POST">
+      <div class="form-grid">
+        <label>
+          Name
+          <input type="text" name="name" required>
+        </label>
+        <label>
+          Email
+          <input type="email" name="email" required>
+        </label>
+        <label>
+          Project Type
+          <select name="projectType" required>
+            <option value="">Select</option>
+            <option>Photography</option>
+            <option>Video</option>
+            <option>Both</option>
+          </select>
+        </label>
+        <label>
+          Budget
+          <select name="budget" required>
+            <option value="">Select</option>
+            <option>$1k - $3k</option>
+            <option>$3k - $8k</option>
+            <option>$8k+</option>
+          </select>
+        </label>
+      </div>
+      <label>
+        Project Details
+        <textarea name="message" rows="4" required></textarea>
+      </label>
+      <input type="hidden" name="_captcha" value="false">
+      <button class="btn primary" type="submit">Send message</button>
+    </form>
+  </section>
+
+  <footer class="footer">
+    <p>© <span id="year"></span> NAVE. Crafted with light.</p>
+    <div class="footer-links">
+      <a href="#portfolio">Portfolio</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </footer>
+
+  <div class="modal" id="projectModal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Close" data-close>×</button>
+      <img id="modalImage" alt="">
+      <div class="modal-body">
+        <p class="eyebrow" id="modalCategory"></p>
+        <h3 id="modalTitle"></h3>
+        <p id="modalDesc"></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="./script.js"></script>
 </body>
 </html>
