@@ -35,7 +35,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // Header Background Change on Scroll
 const header = document.querySelector('header');
-let lastScroll = 0;
 
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
@@ -47,8 +46,6 @@ window.addEventListener('scroll', () => {
         header.style.background = 'rgba(0, 0, 0, 0.95)';
         header.style.padding = '1rem 0';
     }
-
-    lastScroll = currentScroll;
 });
 
 // Portfolio Item Animation on Scroll
@@ -89,22 +86,24 @@ const animateOnScroll = () => {
 // Contact Form Submission
 const contactForm = document.getElementById('contactForm');
 
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
 
-    // Get form values
-    const formData = new FormData(contactForm);
-    const formValues = {};
-    formData.forEach((value, key) => {
-        formValues[key] = value;
+        // Get form values
+        const formData = new FormData(contactForm);
+        const formValues = {};
+        formData.forEach((value, key) => {
+            formValues[key] = value;
+        });
+
+        // Show success message
+        showNotification('Thank you for your message! We will get back to you soon.', 'success');
+
+        // Reset form
+        contactForm.reset();
     });
-
-    // Show success message
-    showNotification('Thank you for your message! We will get back to you soon.', 'success');
-
-    // Reset form
-    contactForm.reset();
-});
+}
 
 // Notification Function
 function showNotification(message, type = 'success') {
@@ -178,17 +177,21 @@ document.head.appendChild(style);
 
 // CTA Button Click Handler
 const ctaButton = document.querySelector('.cta-button');
-ctaButton.addEventListener('click', () => {
-    const contactSection = document.querySelector('#contact');
-    const headerOffset = 80;
-    const elementPosition = contactSection.getBoundingClientRect().top;
-    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+if (ctaButton) {
+    ctaButton.addEventListener('click', () => {
+        const contactSection = document.querySelector('#contact');
+        if (contactSection) {
+            const headerOffset = 80;
+            const elementPosition = contactSection.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
-    window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
     });
-});
+}
 
 // Initialize animations when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
