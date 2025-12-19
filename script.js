@@ -36,17 +36,19 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Header Background Change on Scroll
 const header = document.querySelector('header');
 
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
+if (header) {
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
 
-    if (currentScroll > 100) {
-        header.style.background = 'rgba(0, 0, 0, 0.98)';
-        header.style.padding = '0.5rem 0';
-    } else {
-        header.style.background = 'rgba(0, 0, 0, 0.95)';
-        header.style.padding = '1rem 0';
-    }
-});
+        if (currentScroll > 100) {
+            header.style.background = 'rgba(0, 0, 0, 0.98)';
+            header.style.padding = '0.5rem 0';
+        } else {
+            header.style.background = 'rgba(0, 0, 0, 0.95)';
+            header.style.padding = '1rem 0';
+        }
+    });
+}
 
 // Portfolio Item Animation on Scroll
 const observerOptions = {
@@ -199,11 +201,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Add a welcome effect
     const heroContent = document.querySelector('.hero-content');
-    heroContent.style.opacity = '0';
-    setTimeout(() => {
-        heroContent.style.transition = 'opacity 1s ease';
-        heroContent.style.opacity = '1';
-    }, 100);
+    if (heroContent) {
+        heroContent.style.opacity = '0';
+        setTimeout(() => {
+            heroContent.style.transition = 'opacity 1s ease';
+            heroContent.style.opacity = '1';
+        }, 100);
+    }
 });
 
 // Portfolio Filter (optional enhancement)
