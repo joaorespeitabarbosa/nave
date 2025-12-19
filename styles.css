@@ -244,6 +244,16 @@ button {
 .stat-number { font-size: 28px; font-weight: 700; display: block; }
 .stat-label { color: var(--muted); font-size: 14px; }
 
+.team-grid {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+.team-card .card-media { padding-top: 62%; }
+.team-card h3 { margin: 0; }
+.team-card p { margin: 0; color: var(--muted); }
+
 .about-media { border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); }
 
 .contact-form {
