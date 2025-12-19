@@ -12,12 +12,15 @@ const mediumButtons = [...document.querySelectorAll('.filters [data-filter]')];
 const typeToggle = document.querySelector('.type-toggle');
 const typeOptions = document.querySelector('.type-options');
 const typeButtons = [...document.querySelectorAll('.type-option')];
+const typeDropdown = document.querySelector('.type-dropdown');
 const copyButtons = [...document.querySelectorAll('[data-copy]')];
 const yearEl = document.getElementById('year');
 const sectionTriggers = [...document.querySelectorAll('[data-target]')];
 const sections = {
   home: document.getElementById('home'),
   portfolio: document.getElementById('portfolio'),
+  services: document.getElementById('services'),
+  studio: document.getElementById('studio'),
   about: document.getElementById('about'),
   contact: document.getElementById('contact')
 };
@@ -120,6 +123,13 @@ typeButtons.forEach(btn => {
     updateTypeOptionsVisibility();
     applyPortfolioFilters();
   });
+});
+
+document.addEventListener('click', (e) => {
+  if (!typePanelOpen) return;
+  if (typeDropdown && typeDropdown.contains(e.target)) return;
+  typePanelOpen = false;
+  if (typeOptions) typeOptions.classList.remove('open');
 });
 
 copyButtons.forEach(btn => {

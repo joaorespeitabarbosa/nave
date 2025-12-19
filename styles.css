@@ -97,6 +97,10 @@ button {
   transition: transform var(--transition), background var(--transition), border var(--transition);
 }
 .theme-toggle:hover { transform: translateY(-1px); background: var(--border); }
+.theme-toggle svg { display: block; }
+.icon-sun { display: none; }
+:root.light .icon-sun { display: inline-flex; }
+:root.light .icon-moon { display: none; }
 
 .hero {
   position: relative;
@@ -259,18 +263,29 @@ button {
   padding: 12px 14px;
   border-radius: 10px;
   border: 1px solid var(--border);
-  background: rgba(255,255,255,0.02);
+  background: var(--card);
   color: var(--text);
   transition: border var(--transition), background var(--transition);
+  appearance: none;
 }
 :root.light .contact-form input,
 :root.light .contact-form select,
 :root.light .contact-form textarea {
   background: #f8f9fb;
+  color: #1b1d24;
 }
 .contact-form input:focus,
 .contact-form select:focus,
 .contact-form textarea:focus { outline: none; border-color: var(--accent); }
+
+.contact-form option {
+  background: var(--card);
+  color: var(--text);
+}
+:root.light .contact-form option {
+  background: #fff;
+  color: #1b1d24;
+}
 
 .form-grid {
   display: grid;
