@@ -165,6 +165,26 @@ button {
 .filter-btn.active { background: var(--accent); color: #0a0b0f; border-color: transparent; }
 .filter-btn:hover { background: var(--border); }
 
+.filters-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; position: relative; }
+.type-dropdown { position: relative; }
+.type-options {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  z-index: 5;
+}
+.type-options.open { display: flex; }
+.type-options .filter-btn { width: 100%; text-align: left; white-space: nowrap; }
+.type-options .hidden { display: none; }
+
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -284,8 +304,58 @@ button {
   color: var(--muted);
   border-top: 1px solid var(--border);
 }
-.footer a { color: inherit; }
-.footer-links { display: flex; gap: 12px; flex-wrap: wrap; }
+.footer-actions { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.footer-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.04);
+  color: inherit;
+  text-decoration: none;
+  transition: background var(--transition), border var(--transition), transform var(--transition);
+}
+.footer-btn:hover { background: var(--border); transform: translateY(-1px); }
+.icon { display: inline-flex; }
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+.tooltip { position: relative; }
+.tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 8px 10px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  white-space: nowrap;
+  box-shadow: var(--shadow);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition), transform var(--transition);
+}
+.tooltip:hover::after {
+  opacity: 1;
+  transform: translate(-50%, -2px);
+}
+.tooltip.tooltip-show::after {
+  opacity: 1;
+  transform: translate(-50%, -2px);
+}
 
 .modal {
   position: fixed;

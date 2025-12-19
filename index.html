@@ -45,66 +45,78 @@
         <p class="eyebrow">Selected Work</p>
         <h2>Portfolio</h2>
       </div>
-      <div class="filters" role="group" aria-label="Filter portfolio">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="photo">Photography</button>
-        <button class="filter-btn" data-filter="video">Video</button>
-        <button class="filter-btn" data-filter="aerial">Aerial</button>
+      <div class="filters-row">
+        <div class="filters" role="group" aria-label="Filter by medium">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="photo">Photo</button>
+          <button class="filter-btn" data-filter="video">Film</button>
+        </div>
+        <div class="type-dropdown" role="group" aria-label="Filter by type">
+          <button class="filter-btn type-btn type-toggle active" data-type="all">All types ▼</button>
+          <div class="type-options">
+            <button class="filter-btn type-btn type-option" data-type="all">All types</button>
+            <button class="filter-btn type-btn type-option" data-type="brands">Brands</button>
+            <button class="filter-btn type-btn type-option" data-type="events">Events</button>
+            <button class="filter-btn type-btn type-option" data-type="hospitality">Hospitality</button>
+            <button class="filter-btn type-btn type-option" data-type="music-videos">Music videos</button>
+            <button class="filter-btn type-btn type-option" data-type="people">People</button>
+          </div>
+        </div>
       </div>
     </div>
 
     <div class="grid" id="portfolioGrid">
-      <article class="card" data-category="photo">
+      <article class="card" data-category="photo" data-type="people">
         <div class="card-media" style="background-image:url('https://images.unsplash.com/photo-1526481280695-3c469c2f89b3?auto=format&fit=crop&w=900&q=80');"></div>
         <div class="card-body">
           <h3>Urban Portraits</h3>
           <p>Editorial portrait session in downtown.</p>
-          <button class="link" data-modal data-title="Urban Portraits" data-category="Photography" data-desc="A series of editorial portraits capturing authentic street energy." data-img="https://images.unsplash.com/photo-1526481280695-3c469c2f89b3?auto=format&fit=crop&w=1500&q=80">View details</button>
+          <button class="link" data-modal data-title="Urban Portraits" data-category="Photo" data-desc="A series of editorial portraits capturing authentic street energy." data-img="https://images.unsplash.com/photo-1526481280695-3c469c2f89b3?auto=format&fit=crop&w=1500&q=80">View details</button>
         </div>
       </article>
 
-      <article class="card" data-category="video">
+      <article class="card" data-category="video" data-type="brands">
         <div class="card-media" style="background-image:url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80');"></div>
         <div class="card-body">
           <h3>Brand Film</h3>
           <p>Launch video for a lifestyle brand.</p>
-          <button class="link" data-modal data-title="Brand Film" data-category="Video" data-desc="Launch film blending kinetic visuals and narrative voiceover." data-img="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1500&q=80">View details</button>
+          <button class="link" data-modal data-title="Brand Film" data-category="Film" data-desc="Launch film blending kinetic visuals and narrative voiceover." data-img="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1500&q=80">View details</button>
         </div>
       </article>
 
-      <article class="card" data-category="aerial">
+      <article class="card" data-category="photo" data-type="hospitality">
         <div class="card-media" style="background-image:url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=80');"></div>
         <div class="card-body">
           <h3>Coastal Aerials</h3>
           <p>Drone cinematography over the shoreline.</p>
-          <button class="link" data-modal data-title="Coastal Aerials" data-category="Aerial" data-desc="Sweeping aerial vistas highlighting textures of sea and land." data-img="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1500&q=80">View details</button>
+          <button class="link" data-modal data-title="Coastal Aerials" data-category="Photo" data-desc="Sweeping aerial vistas highlighting textures of sea and land." data-img="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1500&q=80">View details</button>
         </div>
       </article>
 
-      <article class="card" data-category="photo">
+      <article class="card" data-category="photo" data-type="brands">
         <div class="card-media" style="background-image:url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80');"></div>
         <div class="card-body">
           <h3>Studio Lookbook</h3>
           <p>Clean fashion lookbook with soft light.</p>
-          <button class="link" data-modal data-title="Studio Lookbook" data-category="Photography" data-desc="Minimal set design and calibrated lighting for texture-rich garments." data-img="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1500&q=80">View details</button>
+          <button class="link" data-modal data-title="Studio Lookbook" data-category="Photo" data-desc="Minimal set design and calibrated lighting for texture-rich garments." data-img="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1500&q=80">View details</button>
         </div>
       </article>
 
-      <article class="card" data-category="video">
+      <article class="card" data-category="video" data-type="music-videos">
         <div class="card-media" style="background-image:url('https://images.unsplash.com/photo-1521747116042-5a810fda9664?auto=format&fit=crop&w=900&q=80');"></div>
         <div class="card-body">
           <h3>Product Reveal</h3>
           <p>Macro cinematography for a launch.</p>
-          <button class="link" data-modal data-title="Product Reveal" data-category="Video" data-desc="Tabletop macro shots with precision lighting for a premium reveal." data-img="https://images.unsplash.com/photo-1521747116042-5a810fda9664?auto=format&fit=crop&w=1500&q=80">View details</button>
+          <button class="link" data-modal data-title="Product Reveal" data-category="Film" data-desc="Tabletop macro shots with precision lighting for a premium reveal." data-img="https://images.unsplash.com/photo-1521747116042-5a810fda9664?auto=format&fit=crop&w=1500&q=80">View details</button>
         </div>
       </article>
 
-      <article class="card" data-category="aerial">
+      <article class="card" data-category="video" data-type="events">
         <div class="card-media" style="background-image:url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80');"></div>
         <div class="card-body">
           <h3>City from Above</h3>
           <p>Nighttime aerial timelapse project.</p>
-          <button class="link" data-modal data-title="City from Above" data-category="Aerial" data-desc="Hyperlapse aerial views with a focus on light trails and motion." data-img="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1500&q=80">View details</button>
+          <button class="link" data-modal data-title="City from Above" data-category="Film" data-desc="Hyperlapse aerial views with a focus on light trails and motion." data-img="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1500&q=80">View details</button>
         </div>
       </article>
     </div>
@@ -134,7 +146,7 @@
       </div>
       <p>Tell us about your next project. We aim to reply within one business day.</p>
     </div>
-    <form class="contact-form" action="https://formsubmit.co/your@email.com" method="POST">
+    <form class="contact-form" action="https://formsubmit.co/joaorb.02@gmail.com" method="POST">
       <div class="form-grid">
         <label>
           Name
@@ -148,7 +160,7 @@
           Project Type
           <select name="projectType" required>
             <option value="">Select</option>
-            <option>Photography</option>
+            <option>Photo</option>
             <option>Video</option>
             <option>Both</option>
           </select>
@@ -174,10 +186,34 @@
 
   <footer class="footer">
     <p>© <span id="year"></span> NAVE. Crafted with light.</p>
-    <div class="footer-links">
-      <a href="#portfolio">Portfolio</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
+    <div class="footer-actions">
+      <a class="footer-btn" href="https://www.instagram.com/wearenave.pt" target="_blank" rel="noopener" aria-label="Instagram">
+        <span class="icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="2"/>
+            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+            <circle cx="17.5" cy="6.5" r="1.25" fill="currentColor"/>
+          </svg>
+        </span>
+        <span class="sr-only">Instagram</span>
+      </a>
+      <button class="footer-btn tooltip" data-copy="+351 912 345 678" data-tooltip="+351 912 345 678" aria-label="Call">
+        <span class="icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6.6 3.5 9 4.1c.4.1.7.4.8.8l.6 3.1c.1.4 0 .8-.3 1.1l-1.4 1.4c.9 1.8 2.4 3.3 4.2 4.2l1.4-1.4c.3-.3.7-.4 1.1-.3l3.1.6c.4.1.7.4.8.8l.6 2.4c.1.5-.2 1-.7 1.2-2.2.9-4.8.9-7.1-.3a16.6 16.6 0 0 1-7.5-7.5c-1.2-2.3-1.2-4.9-.3-7.1.2-.5.7-.8 1.2-.7Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="sr-only">Call</span>
+      </button>
+      <button class="footer-btn tooltip" data-copy="hello@wearenave.pt" data-tooltip="hello@wearenave.pt" aria-label="Email">
+        <span class="icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="2"/>
+            <path d="m4 7 7.4 4.6c.4.3.8.3 1.2 0L20 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="sr-only">Email</span>
+      </button>
     </div>
   </footer>
 
