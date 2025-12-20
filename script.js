@@ -31,6 +31,15 @@ const sections = {
   about: document.getElementById('about'),
   contact: document.getElementById('contact')
 };
+const EMAILJS_PUBLIC_KEY = 'MRf0NgoC7kMfExS3b';
+const EMAILJS_SERVICE_ID = 'service_kyla76w';
+const EMAILJS_TEMPLATE_ID = 'template_0lecnzy';
+
+function sendAnalyticsEvent(name, params = {}) {
+  if (window.analytics && typeof window.analytics.trackEvent === 'function') {
+    window.analytics.trackEvent(name, params);
+  }
+}
 
 let activeMedium = 'all';
 let activeType = 'all';
@@ -243,6 +252,41 @@ function closeModal() {
   document.body.style.overflow = '';
 }
 
+function bindContactForm() {
+  const form = document.getElementById('contactForm');
+  const statusEl = document.getElementById('contactStatus');
+  if (!form) return;
+
+  const setStatus = (msg, type = '') => {
+    if (!statusEl) return;
+    statusEl.textContent = msg;
+    statusEl.classList.remove('success', 'error');
+    if (type) statusEl.classList.add(type);
+  };
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    setStatus('Sending…');
+
+    if (!window.emailjs || !EMAILJS_PUBLIC_KEY || !EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID) {
+      setStatus('EmailJS not configured. Add your keys in script.js.', 'error');
+      return;
+    }
+
+    try {
+      window.emailjs.init(EMAILJS_PUBLIC_KEY);
+      await window.emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, form);
+      setStatus('Message sent. We will reply soon.', 'success');
+      form.reset();
+      sendAnalyticsEvent('submit_contact_form', { category: 'conversion' });
+      sendAnalyticsEvent('lead_submitted', { category: 'conversion' });
+    } catch (err) {
+      console.error('EmailJS error', err);
+      setStatus('Failed to send. Please try again.', 'error');
+    }
+  });
+}
+
 document.addEventListener('click', (e) => {
   const trigger = e.target.closest('[data-modal]');
   if (trigger) {
@@ -263,3 +307,5 @@ document.addEventListener('keydown', (e) => {
     closeModal();
   }
 });
+
+bindContactForm();

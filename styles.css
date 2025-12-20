@@ -377,6 +377,15 @@ button {
   gap: 12px;
 }
 
+.form-status {
+  margin: 6px 0 4px;
+  min-height: 18px;
+  font-size: 14px;
+  color: var(--muted);
+}
+.form-status.success { color: var(--accent); }
+.form-status.error { color: #ff8a8a; }
+
 .btn {
   display: inline-flex;
   align-items: center;

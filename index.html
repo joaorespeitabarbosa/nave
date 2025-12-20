@@ -266,7 +266,7 @@
       </div>
       <p>Tell us about your next project. We aim to reply within one business day.</p>
     </div>
-    <form class="contact-form" action="https://formsubmit.co/joaorb.02@gmail.com" method="POST">
+    <form class="contact-form" id="contactForm">
       <div class="form-grid">
         <label>
           Name
@@ -299,7 +299,7 @@
         Project Details
         <textarea name="message" rows="4" required></textarea>
       </label>
-      <input type="hidden" name="_captcha" value="false">
+      <p class="form-status" id="contactStatus" aria-live="polite"></p>
       <button class="btn primary" type="submit">Send message</button>
     </form>
   </section>
@@ -350,6 +350,8 @@
     </div>
   </div>
 
+  <!-- EmailJS SDK: replace PUBLIC_KEY, SERVICE_ID, and TEMPLATE_ID in script.js -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <script src="./analytics.js"></script>
   <script src="./script.js"></script>
 </body>
