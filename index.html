@@ -8,6 +8,23 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Google Analytics 4: replace G-XXXXXXXXXX with your Measurement ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GQ1H69GY0Y"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    // TODO: replace G-XXXXXXXXXX with the production GA4 Measurement ID.
+    gtag('config', 'G-GQ1H69GY0Y');
+  </script>
+  <!-- Microsoft Clarity: replace CLARITY-ID with your project ID. Clarity records heatmaps and session replays. -->
+  <script>
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "uoka0hhjo5");
+  </script>
 </head>
 <body>
   <header class="top-bar">
@@ -20,7 +37,7 @@
       <a href="#" data-target="services">Services</a>
       <a href="#" data-target="studio">Studio</a>
       <a href="#" data-target="about">About</a>
-      <a href="#" data-target="contact">Contact</a>
+      <a href="#" data-target="contact" data-analytics="contact-button" data-location="nav">Contact</a>
     </nav>
     <button class="theme-toggle" aria-label="Toggle theme" id="themeToggle">
       <span class="icon-moon" aria-hidden="true">
@@ -48,7 +65,7 @@
       <p>Photography and filmmaking tailored for brands, artists, and dreamers.</p>
       <div class="hero-actions">
         <a class="btn primary" href="#" data-target="portfolio">View Portfolio</a>
-        <a class="btn ghost" href="#" data-target="contact">Book a project</a>
+        <a class="btn ghost" href="#" data-target="contact" data-analytics="contact-button" data-location="hero">Book a project</a>
       </div>
     </div>
   </section>
@@ -300,7 +317,7 @@
         </span>
         <span class="sr-only">Instagram</span>
       </a>
-      <button class="footer-btn tooltip" data-copy="+351 964 341 929" data-tooltip="+351 964 341 929" aria-label="Call">
+      <button class="footer-btn tooltip" data-copy="+351 964 341 929" data-tooltip="+351 964 341 929" aria-label="Call" data-analytics="click_phone" data-location="footer">
         <span class="icon" aria-hidden="true">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M6.6 3.5 9 4.1c.4.1.7.4.8.8l.6 3.1c.1.4 0 .8-.3 1.1l-1.4 1.4c.9 1.8 2.4 3.3 4.2 4.2l1.4-1.4c.3-.3.7-.4 1.1-.3l3.1.6c.4.1.7.4.8.8l.6 2.4c.1.5-.2 1-.7 1.2-2.2.9-4.8.9-7.1-.3a16.6 16.6 0 0 1-7.5-7.5c-1.2-2.3-1.2-4.9-.3-7.1.2-.5.7-.8 1.2-.7Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -308,7 +325,7 @@
         </span>
         <span class="sr-only">Call</span>
       </button>
-      <button class="footer-btn tooltip" data-copy="wearenave@gmail.com" data-tooltip="wearenave@gmail.com" aria-label="Email">
+      <button class="footer-btn tooltip" data-copy="wearenave@gmail.com" data-tooltip="wearenave@gmail.com" aria-label="Email" data-analytics="click_email" data-location="footer">
         <span class="icon" aria-hidden="true">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="2"/>
@@ -333,6 +350,7 @@
     </div>
   </div>
 
+  <script src="./analytics.js"></script>
   <script src="./script.js"></script>
 </body>
 </html>

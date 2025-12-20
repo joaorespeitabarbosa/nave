@@ -227,6 +227,13 @@ function openModal({ title, category, desc, img }) {
   modalTitle.textContent = title;
   modalCategory.textContent = category;
   modalDesc.textContent = desc;
+  if (window.analytics && typeof window.analytics.trackEvent === 'function') {
+    window.analytics.trackEvent('open_project', {
+      title,
+      category,
+      description: desc
+    });
+  }
   modal.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
 }
