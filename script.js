@@ -13,6 +13,13 @@ const typeToggle = document.querySelector('.type-toggle');
 const typeOptions = document.querySelector('.type-options');
 const typeButtons = [...document.querySelectorAll('.type-option')];
 const typeDropdown = document.querySelector('.type-dropdown');
+const servicesInner = document.getElementById('servicesInner');
+const servicesTrack = document.getElementById('servicesTrack');
+const servicesPrev = document.getElementById('servicesPrev');
+const servicesNext = document.getElementById('servicesNext');
+let servicesIndex = 0;
+let servicesAutoTimer = null;
+const SERVICES_AUTO_DELAY = 3400;
 const copyButtons = [...document.querySelectorAll('[data-copy]')];
 const yearEl = document.getElementById('year');
 const sectionTriggers = [...document.querySelectorAll('[data-target]')];
@@ -131,6 +138,64 @@ document.addEventListener('click', (e) => {
   typePanelOpen = false;
   if (typeOptions) typeOptions.classList.remove('open');
 });
+
+function updateServicesSlider() {
+  if (!servicesInner) return;
+  const slides = [...servicesInner.children];
+  const total = slides.length;
+  if (!total) return;
+
+  servicesIndex = (servicesIndex + total) % total;
+
+  slides.forEach((slide, idx) => {
+    slide.classList.remove('is-center', 'is-left', 'is-right', 'is-far');
+    const offset = (idx - servicesIndex + total) % total;
+    if (offset === 0) {
+      slide.classList.add('is-center');
+    } else if (offset === 1) {
+      slide.classList.add('is-right');
+    } else if (offset === total - 1) {
+      slide.classList.add('is-left');
+    } else {
+      slide.classList.add('is-far');
+    }
+  });
+}
+
+function stopServicesAuto() {
+  if (servicesAutoTimer) {
+    clearInterval(servicesAutoTimer);
+    servicesAutoTimer = null;
+  }
+}
+
+function startServicesAuto() {
+  stopServicesAuto();
+  servicesAutoTimer = setInterval(() => {
+    servicesIndex += 1;
+    updateServicesSlider();
+  }, SERVICES_AUTO_DELAY);
+}
+
+if (servicesPrev && servicesNext && servicesInner) {
+  servicesPrev.addEventListener('click', () => {
+    servicesIndex -= 1;
+    updateServicesSlider();
+    startServicesAuto();
+  });
+  servicesNext.addEventListener('click', () => {
+    servicesIndex += 1;
+    updateServicesSlider();
+    startServicesAuto();
+  });
+  updateServicesSlider();
+  startServicesAuto();
+}
+
+if (servicesTrack) {
+  servicesTrack.addEventListener('mouseenter', stopServicesAuto);
+  servicesTrack.addEventListener('mouseleave', startServicesAuto);
+}
 
 copyButtons.forEach(btn => {
   btn.addEventListener('click', async () => {

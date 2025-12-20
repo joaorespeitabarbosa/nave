@@ -253,6 +253,80 @@ button {
 .team-card .card-media { padding-top: 62%; }
 .team-card h3 { margin: 0; }
 .team-card p { margin: 0; color: var(--muted); }
+.services-carousel {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 12px;
+}
+.services-track {
+  overflow: visible;
+  border-radius: 16px;
+  padding: 14px 0 18px;
+}
+.services-track-inner {
+  position: relative;
+  min-height: 240px;
+}
+.service-slide {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: clamp(240px, 58vw, 360px);
+  min-height: 220px;
+  transform: translateX(-50%) scale(0.82);
+  opacity: 0;
+  filter: saturate(0.6);
+  transition: transform 320ms ease, opacity 320ms ease, filter 320ms ease, box-shadow 320ms ease, border 320ms ease;
+  z-index: 1;
+}
+.services-track-inner .card { height: 100%; }
+.services-track-inner .card-body { height: 100%; }
+
+.service-slide.is-center {
+  opacity: 1;
+  transform: translateX(-50%) scale(1.04);
+  filter: saturate(1.05);
+  z-index: 4;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.28);
+  border: 1px solid color-mix(in srgb, var(--accent) 60%, transparent);
+}
+
+.service-slide.is-left {
+  opacity: 0.6;
+  transform: translate(calc(-50% - 48%), 0) scale(0.92);
+  filter: saturate(0.85);
+  z-index: 3;
+}
+
+.service-slide.is-right {
+  opacity: 0.6;
+  transform: translate(calc(-50% + 48%), 0) scale(0.92);
+  filter: saturate(0.85);
+  z-index: 3;
+}
+
+.service-slide.is-far {
+  opacity: 0;
+  transform: translateX(-50%) scale(0.8);
+  pointer-events: none;
+  z-index: 1;
+}
+.carousel-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.04);
+  color: var(--text);
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+  transition: background var(--transition), transform var(--transition), border var(--transition);
+}
+.carousel-btn:hover { background: var(--border); transform: translateY(-1px); }
+.carousel-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
 
 .about-media { border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); }
 
