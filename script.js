@@ -22,6 +22,7 @@ const serviceSlides = servicesInner ? [...servicesInner.children] : [];
 let servicesIndex = 0;
 let servicesAutoTimer = null;
 const SERVICES_AUTO_DELAY = 3400;
+const SERVICES_SWIPE_THRESHOLD = 40;
 const copyButtons = [...document.querySelectorAll('[data-copy]')];
 const yearEl = document.getElementById('year');
 const sectionTriggers = [...document.querySelectorAll('[data-target]')];
@@ -209,6 +210,31 @@ if (servicesPrev && servicesNext && servicesInner) {
   });
   updateServicesSlider();
   startServicesAuto();
+}
+
+if (servicesTrack && window.matchMedia('(max-width: 800px)').matches) {
+  let touchStartX = 0;
+  let touchDeltaX = 0;
+
+  servicesTrack.addEventListener('touchstart', (e) => {
+    if (!e.touches.length) return;
+    touchStartX = e.touches[0].clientX;
+    touchDeltaX = 0;
+    stopServicesAuto();
+  }, { passive: true });
+
+  servicesTrack.addEventListener('touchmove', (e) => {
+    if (!e.touches.length) return;
+    touchDeltaX = e.touches[0].clientX - touchStartX;
+  }, { passive: true });
+
+  servicesTrack.addEventListener('touchend', () => {
+    if (Math.abs(touchDeltaX) > SERVICES_SWIPE_THRESHOLD) {
+      servicesIndex += touchDeltaX < 0 ? 1 : -1;
+      updateServicesSlider();
+    }
+    startServicesAuto();
+  });
 }
 
 if (servicesTrack) {
