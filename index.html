@@ -98,11 +98,11 @@
 
     <div class="grid" id="portfolioGrid">
       <article class="card" data-category="photo" data-type="people">
-        <div class="card-media" style="background-image:url('https://images.unsplash.com/photo-1526481280695-3c469c2f89b3?auto=format&fit=crop&w=900&q=80');"></div>
+        <div class="card-media" style="background-image:url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80');"></div>
         <div class="card-body">
           <h3>Urban Portraits</h3>
           <p>Editorial portrait session in downtown.</p>
-          <button class="link" data-modal data-title="Urban Portraits" data-category="Photo" data-desc="A series of editorial portraits capturing authentic street energy." data-img="https://images.unsplash.com/photo-1526481280695-3c469c2f89b3?auto=format&fit=crop&w=1500&q=80">View details</button>
+          <button class="link" data-modal data-title="Urban Portraits" data-category="Photo" data-desc="A series of editorial portraits capturing authentic street energy." data-img="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1600&q=80">View details</button>
         </div>
       </article>
 
@@ -111,7 +111,7 @@
         <div class="card-body">
           <h3>Brand Film</h3>
           <p>Launch video for a lifestyle brand.</p>
-          <button class="link" data-modal data-title="Brand Film" data-category="Film" data-desc="Launch film blending kinetic visuals and narrative voiceover." data-img="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1500&q=80">View details</button>
+          <button class="link" data-modal data-title="Brand Film" data-category="Film" data-desc="Launch film blending kinetic visuals and narrative voiceover." data-video="./videos/brandfilm.mp4" data-poster="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1500&q=80">View details</button>
         </div>
       </article>
 
@@ -138,16 +138,16 @@
         <div class="card-body">
           <h3>Product Reveal</h3>
           <p>Macro cinematography for a launch.</p>
-          <button class="link" data-modal data-title="Product Reveal" data-category="Film" data-desc="Tabletop macro shots with precision lighting for a premium reveal." data-img="https://images.unsplash.com/photo-1521747116042-5a810fda9664?auto=format&fit=crop&w=1500&q=80">View details</button>
+          <button class="link" data-modal data-title="Product Reveal" data-category="Film" data-desc="Tabletop macro shots with precision lighting for a premium reveal." data-video="./videos/productreveal.mp4" data-poster="https://images.unsplash.com/photo-1521747116042-5a810fda9664?auto=format&fit=crop&w=1500&q=80">View details</button>
         </div>
       </article>
 
       <article class="card" data-category="video" data-type="events">
-        <div class="card-media" style="background-image:url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80');"></div>
+        <div class="card-media" style="background-image:url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=80');"></div>
         <div class="card-body">
           <h3>City from Above</h3>
           <p>Nighttime aerial timelapse project.</p>
-          <button class="link" data-modal data-title="City from Above" data-category="Film" data-desc="Hyperlapse aerial views with a focus on light trails and motion." data-img="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1500&q=80">View details</button>
+          <button class="link" data-modal data-title="City from Above" data-category="Film" data-desc="Hyperlapse aerial views with a focus on light trails and motion." data-video="./videos/cityfromabove.mp4" data-poster="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1800&q=80">View details</button>
         </div>
       </article>
     </div>
@@ -342,6 +342,7 @@
     <div class="modal-content">
       <button class="modal-close" aria-label="Close" data-close>×</button>
       <img id="modalImage" alt="">
+      <video id="modalVideo" controls playsinline style="display:none; width:100%;"></video>
       <div class="modal-body">
         <p class="eyebrow" id="modalCategory"></p>
         <h3 id="modalTitle"></h3>

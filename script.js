@@ -4,6 +4,7 @@ const root = document.documentElement;
 const themeToggle = document.getElementById('themeToggle');
 const modal = document.getElementById('projectModal');
 const modalImage = document.getElementById('modalImage');
+const modalVideo = document.getElementById('modalVideo');
 const modalTitle = document.getElementById('modalTitle');
 const modalCategory = document.getElementById('modalCategory');
 const modalDesc = document.getElementById('modalDesc');
@@ -17,6 +18,7 @@ const servicesInner = document.getElementById('servicesInner');
 const servicesTrack = document.getElementById('servicesTrack');
 const servicesPrev = document.getElementById('servicesPrev');
 const servicesNext = document.getElementById('servicesNext');
+const serviceSlides = servicesInner ? [...servicesInner.children] : [];
 let servicesIndex = 0;
 let servicesAutoTimer = null;
 const SERVICES_AUTO_DELAY = 3400;
@@ -197,6 +199,14 @@ if (servicesPrev && servicesNext && servicesInner) {
     updateServicesSlider();
     startServicesAuto();
   });
+  serviceSlides.forEach((slide, idx) => {
+    slide.dataset.index = idx;
+    slide.addEventListener('click', () => {
+      servicesIndex = idx;
+      updateServicesSlider();
+      startServicesAuto();
+    });
+  });
   updateServicesSlider();
   startServicesAuto();
 }
@@ -230,9 +240,23 @@ copyButtons.forEach(btn => {
   });
 });
 
-function openModal({ title, category, desc, img }) {
-  modalImage.src = img;
-  modalImage.alt = title;
+function openModal({ title, category, desc, img, video, poster }) {
+  const hasVideo = Boolean(video);
+  if (hasVideo && modalVideo) {
+    modalVideo.src = video;
+    if (poster) modalVideo.setAttribute('poster', poster);
+    modalVideo.style.display = 'block';
+    modalVideo.load();
+    modalVideo.play().catch(() => {});
+  }
+  if (modalImage) {
+    modalImage.src = hasVideo ? '' : img;
+    modalImage.alt = title;
+    modalImage.style.display = hasVideo ? 'none' : 'block';
+  }
+  if (modalVideo) {
+    modalVideo.style.display = hasVideo ? 'block' : 'none';
+  }
   modalTitle.textContent = title;
   modalCategory.textContent = category;
   modalDesc.textContent = desc;
@@ -240,7 +264,8 @@ function openModal({ title, category, desc, img }) {
     window.analytics.trackEvent('open_project', {
       title,
       category,
-      description: desc
+      description: desc,
+      hasVideo
     });
   }
   modal.setAttribute('aria-hidden', 'false');
@@ -250,6 +275,12 @@ function openModal({ title, category, desc, img }) {
 function closeModal() {
   modal.setAttribute('aria-hidden', 'true');
   document.body.style.overflow = '';
+  if (modalVideo) {
+    modalVideo.pause();
+    modalVideo.currentTime = 0;
+    modalVideo.removeAttribute('src');
+    modalVideo.removeAttribute('poster');
+  }
 }
 
 function bindContactForm() {
@@ -294,7 +325,9 @@ document.addEventListener('click', (e) => {
       title: trigger.dataset.title,
       category: trigger.dataset.category,
       desc: trigger.dataset.desc,
-      img: trigger.dataset.img
+      img: trigger.dataset.img,
+      video: trigger.dataset.video,
+      poster: trigger.dataset.poster
     });
   }
   if (e.target.hasAttribute('data-close')) {
