@@ -533,7 +533,15 @@ button {
 
 @media (max-width: 640px) {
   .top-bar { padding: 0 16px; }
-  .nav { display: none; }
+  .nav {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    max-width: calc(100% - 140px);
+    scrollbar-width: none;
+  }
+  .nav::-webkit-scrollbar { display: none; }
+  .nav a { white-space: nowrap; padding: 8px 10px; }
   .hero-content { padding-top: 120px; }
   .footer { flex-direction: column; align-items: flex-start; }
 }
